@@ -1,2 +1,2 @@
 # discogs-in-demand
-Find releases that people want
+Find releases that people want.
