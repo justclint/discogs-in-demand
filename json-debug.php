@@ -1,6 +1,9 @@
 <?php
+/**
+ * Use this file to get debug info from the Discogs API
+ */
 
-$url = "https://api.discogs.com/database/search?q=&type=release&per_page=100&token=bRqCIsfeccenixsilAWEaTvPQFdghYbQPFNBTsCr";
+$url = 'https://api.discogs.com/database/search?q=&type=release&per_page=100&token=bRqCIsfeccenixsilAWEaTvPQFdghYbQPFNBTsCr';
 $userAgent = 'DiscogsInDemand/0.1 +http://justclint.com';
 
 //initialize the session
