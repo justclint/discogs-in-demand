@@ -17,4 +17,11 @@ $userAgent = 'DiscogsInDemand/0.1 +http://justclint.com';
  * @var string
  */
 $token = 'HGUPsTxYTOaDqzQcKVDLBLRbnHzlKaxiqLdfSClN';
+
+/**
+ * Discogs API URL
+ * @var string
+ */
+$url = 'https://api.discogs.com/database/search?q=&type=release&per_page=100&token=' . $token;
+
 ?>
