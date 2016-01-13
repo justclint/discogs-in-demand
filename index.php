@@ -1,5 +1,8 @@
 <?php 
+require 'config.php';
+
 require 'functions.php';
+require 'discogs-api.php';
 ?>
 
 
