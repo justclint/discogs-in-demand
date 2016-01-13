@@ -11,8 +11,7 @@
 
 <?php
 
-require 'config.php';
-
+//require 'config.php';
 
 
 	if (!isset($_POST['next'])) {
@@ -21,32 +20,6 @@ require 'config.php';
 	    $url = $_POST['next'];
 	}
 
-
-
-
-
-//initialize the session
-$ch = curl_init();
-//Set the User-Agent Identifier
-curl_setopt($ch, CURLOPT_USERAGENT, $userAgent);
-//Set the URL of the page or file to download.
-curl_setopt($ch, CURLOPT_URL, $url);
-//Ask cURL to return the contents in a variable instead of simply echoing them
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-//Execute the curl session
-$output = curl_exec($ch);
-//close the session
-curl_close ($ch);
-
-
-$json = json_decode($output);
-
-$results = $json->results;
-
-//echo $output;
-//echo "<pre>";
-//echo json_encode($json, JSON_PRETTY_PRINT);
-//print_r($json); 
 
 
 
@@ -70,21 +43,21 @@ function findInDemand() {
 
         /**
          * Difference of have/want
-         * @var int
+         * @var integer
          */
         $dif = $row->community->want - $row->community->have; 
         
         /**
          * Average of have/want      
-         * @var int
+         * @var integer
          */
         $avg = ($row->community->want + $row->community->have) / 2; 
 
         /**
          * Percentage of have/want
-         * @var int
+         * @var integer
          */
-        $percentage = ($dif / $avg) * 100;         
+        //$percentage = ($dif / $avg) * 100;         
 
 
         if ($usersHave === 0) {
