@@ -16,7 +16,7 @@ $userAgent = 'DiscogsInDemand/0.1 +http://justclint.com';
  * Get the token from the developers section of your Discogs account 
  * @var string
  */
-$token = 'HGUPsTxYTOaDqzQcKVDLBLRbnHzlKaxiqLdfSClN';
+$token = 'bRqCIsfeccenixsilAWEaTvPQFdghYbQPFNBTsCr';
 
 /**
  * Discogs API URL

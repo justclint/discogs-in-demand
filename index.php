@@ -1,6 +1,5 @@
 <?php 
 require 'config.php';
-
 require 'functions.php';
 require 'discogs-api.php';
 ?>
@@ -76,7 +75,44 @@ require 'discogs-api.php';
                 <li class="style">Style</li>
             </ul>
 
-            <?php findInDemand(); ?>          
+            <?php 
+
+
+$arrayDemand = findInDemand();
+
+//usort($arrayDemand, 'sortDemand');
+
+foreach ($arrayDemand as $key => $value) {
+
+            echo '<ul>';
+            echo '<li class="title"><a href="http://discogs.com' . $value['uri'] . '" target="_blank">' . $value['title'] . '</a></li>';
+            echo '<li class="have">' . $value['have'] . '</li>';
+            echo '<li class="want">' . $value['want'] . '</li>';
+            echo '<li class="want">' . $value['demand'] . '%</li>';
+            
+            echo '<li class="genre">';
+            foreach ($value['genre'] as $genres => $genre) {
+                 echo '<div>';
+                 print_r($genre);
+            }
+            echo '</li>';
+
+            echo '<li class="style">';
+            foreach ($value['style'] as $styles => $style) {
+                 echo '<div>';
+                 print_r($style);
+            }
+            echo '</li>';
+
+            echo '</ul>';
+   
+}
+
+
+// echo '<pre>';
+// print_r($arrayDemand); 
+
+?>
 
         </div>
 
