@@ -4,7 +4,6 @@ require 'functions.php';
 require 'discogs-api.php';
 ?>
 
-
 <!doctype html>
 
 <html lang="en">
@@ -57,65 +56,67 @@ require 'discogs-api.php';
 
         <div class="container">        
 
-<div style="clear:both;">Total Releases: <?php echo $json->pagination->items ?>   -   Total In Demand: <?php getCountInDemand(); ?> of 100 per page</div>            
+         <?php
+         
+         ?>   
 
-            <div class="page-nav">
-                <form method="post" action=""> 
-                    <input type="hidden" name="next" value="<?php echo $json->pagination->urls->next; ?>">
-                    <input type="submit" value="Next" name="submit">
-                </form>
-            </div>
+        <div style="clear:both;">Total Releases: <?php echo $json->pagination->items ?>   -   Total In Demand: <?php getCountInDemand(); ?> of 100 per page</div>            
 
-            <ul>
-                <li class="title">Title</li>
-                <li class="have">Have</li>
-                <li class="want">Want</li>
-                <li class="demand">Demand</li>
-                <li class="genre">Genre</li>
-                <li class="style">Style</li>
-            </ul>
+        <div class="page-nav">
 
-            <?php 
-
-
-$arrayDemand = findInDemand();
-
-//usort($arrayDemand, 'sortDemand');
-
-foreach ($arrayDemand as $key => $value) {
-
-            echo '<ul>';
-            echo '<li class="title"><a href="http://discogs.com' . $value['uri'] . '" target="_blank">' . $value['title'] . '</a></li>';
-            echo '<li class="have">' . $value['have'] . '</li>';
-            echo '<li class="want">' . $value['want'] . '</li>';
-            echo '<li class="want">' . $value['demand'] . '%</li>';
-            
-            echo '<li class="genre">';
-            foreach ($value['genre'] as $genres => $genre) {
-                 echo '<div>';
-                 print_r($genre);
+        <?php 
+            if (isset($urlPrevious)) { 
+                echo '<button onclick="history.go(-1);">Back </button>';
             }
-            echo '</li>';
+        ?>    
+            <form method="post" action=""> 
+                <input type="hidden" name="next" value="<?php echo $json->pagination->urls->next; ?>">
+                <input type="submit" value="Next" name="submitNext">
+            </form>
+        </div>
 
-            echo '<li class="style">';
-            foreach ($value['style'] as $styles => $style) {
-                 echo '<div>';
-                 print_r($style);
-            }
-            echo '</li>';
+        <ul>
+            <li class="title">Title</li>
+            <li class="have">Have</li>
+            <li class="want">Want</li>
+            <li class="demand">Demand</li>
+            <li class="genre">Genre</li>
+            <li class="style">Style</li>
+        </ul>
 
-            echo '</ul>';
-   
-}
+<?php 
+    $arrayDemand = findInDemand();
 
+    usort($arrayDemand, "sortDemand");
 
-// echo '<pre>';
-// print_r($arrayDemand); 
+    foreach ($arrayDemand as $key => $value) {
 
+        echo '<ul>';
+        echo '<li class="title"><a href="http://discogs.com' . $value['uri'] . '" target="_blank">' . $value['title'] . '</a></li>';
+        echo '<li class="have">' . $value['have'] . '</li>';
+        echo '<li class="want">' . $value['want'] . '</li>';
+        echo '<li class="want">' . $value['demand'] . '%</li>';
+
+        echo '<li class="genre">';
+        foreach ($value['genre'] as $genres => $genre) {
+             echo '<div>';
+             print_r($genre);
+        }
+        echo '</li>';
+
+        echo '<li class="style">';
+        foreach ($value['style'] as $styles => $style) {
+             echo '<div>';
+             print_r($style);
+        }
+        echo '</li>';
+
+        echo '</ul>';
+       
+    } 
 ?>
 
         </div>
 
     </body>
 </html>
-

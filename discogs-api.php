@@ -1,4 +1,12 @@
 <?php
+/**
+ * The curl json response for Discogs
+ *
+ * @package Discogs In Demand
+ * 
+ */
+
+
 //initialize the session
 $ch = curl_init();
 

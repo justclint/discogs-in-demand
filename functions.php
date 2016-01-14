@@ -6,23 +6,35 @@
  *
  * 
  */
-?>
+
+/**
+ * Check urls for next previous buttons
+ */
+if (!isset($_POST['next'])) {
+    $url = $url;
+} else {
+    $url = $_POST['next'];
+    $urlPrevious = "";
+}    
 
 
-<?php
-//require 'config.php';
-    if (!isset($_POST['next'])) {
-        $url = $url;
-    } else {
-        $url = $_POST['next'];
-    }
-
-function sortDemand($a, $b) 
-{
-    return $a->community->have - $b->community->have;
+/**
+ * A compare funtion to sort releases by the in demand percentage
+ * @param  integer $a gets $value['demand']
+ * @param  integer $b gets $value['demand']
+ * @return integer    the sort order
+ */
+function sortDemand($a, $b){
+    return $b['demand'] - $a['demand'];
 }
-    
 
+/**
+ * Reads json $results from Discogs.
+ * Then converts to an associated array.
+ * Then filters the releases that are in demand (have < want)
+ * 
+ * @return [type] [description]
+ */
 function findInDemand() {
     global $results;
 
@@ -64,9 +76,13 @@ function findInDemand() {
     return $demandResults;
 }
 
-
+/**
+ * The number count of releases in demand (have < want) 
+ * @return integer 
+ */
 
 $countInDemand = 0;
+
 function getCountInDemand() {
     global $results;
     global $countInDemand;
@@ -78,6 +94,8 @@ function getCountInDemand() {
         }   
     }
     $countInDemand = $i;
+
     echo $countInDemand;
 }
+
 ?>
