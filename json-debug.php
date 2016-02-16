@@ -3,6 +3,10 @@
  * Use this file to get debug info from the Discogs API
  */
 
+require 'config.php';
+require 'functions.php';
+require 'discogs-api.php';
+
 $url = 'https://api.discogs.com/database/search?q=&type=release&per_page=100&token=bRqCIsfeccenixsilAWEaTvPQFdghYbQPFNBTsCr';
 $userAgent = 'DiscogsInDemand/0.1 +http://justclint.com';
 
