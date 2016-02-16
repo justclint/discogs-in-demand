@@ -10,13 +10,13 @@
  * Discogs requires a unique user agent
  * @var string
  */
-$userAgent = 'DiscogsInDemand/0.1 +http://justclint.com';
+$userAgent = 'USERAGENT';
 
 /**
  * Get the token from the developers section of your Discogs account 
  * @var string
  */
-$token = 'bRqCIsfeccenixsilAWEaTvPQFdghYbQPFNBTsCr';
+$token = 'TOKEN';
 
 /**
  * Discogs API URL
